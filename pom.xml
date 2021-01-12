@@ -51,7 +51,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.4-1201-jdbc41</version>
+			
 		</dependency>
 
 
@@ -105,6 +105,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
+				 <version>3.6.2</version>
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
