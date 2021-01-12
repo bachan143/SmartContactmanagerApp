@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,7 +22,11 @@ public class CustomUserDetalis implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(user.getRole());
-		return List.of(simpleGrantedAuthority);
+		List<GrantedAuthority> listAuthorities=new ArrayList<>();
+		
+		listAuthorities.add(simpleGrantedAuthority);
+		
+		return listAuthorities; 
 	}
 
 	@Override
