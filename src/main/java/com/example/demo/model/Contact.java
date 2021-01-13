@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -15,8 +17,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Contact {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int cId;
+	@GeneratedValue(generator = "contact_generator")
+	@SequenceGenerator(
+			name="contact_generator",
+			sequenceName = "contact_sequence",
+			initialValue =1000
+			)
+	private Long cId;
 	private String name;
 	private String secondName;
 	private String work;
@@ -27,14 +34,14 @@ public class Contact {
 	private String description;
 	@ManyToOne
 	@JsonIgnore
+	
 	private User user;
 
-	public int getcId() {
-		return cId;
-	}
-
-	public void setcId(int cId) {
+	public void setcId(Long cId) {
 		this.cId = cId;
+	}
+	public Long getcId() {
+		return cId;
 	}
 
 	@Override

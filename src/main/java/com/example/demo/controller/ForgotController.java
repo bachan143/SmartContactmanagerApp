@@ -36,7 +36,7 @@ public class ForgotController {
 	@PostMapping("/send-otp")
 	public String sendOtp(@RequestParam("email") String email, HttpSession session) {
 		
-		int otp   =(int)(Math.random()*90000)+10000;
+		Long otp   =(long) ((Math.random()*90000)+10000);
 
 		String subject = "OTP From SCM";
 		String message = "<div style='border:1px solid #e2e2e2;padding:20px'>" + "<h1>" + "OTP is" + "<b>" + otp
@@ -56,7 +56,7 @@ public class ForgotController {
 	}
 
 	@PostMapping("/verify-otp")
-	public String verifyOtp(@RequestParam("otp") int otp, HttpSession session) {
+	public String verifyOtp(@RequestParam("otp") Long otp, HttpSession session) {
 		int yourOtp = (int) session.getAttribute("myotp");
 		String email = (String) session.getAttribute("email");
 

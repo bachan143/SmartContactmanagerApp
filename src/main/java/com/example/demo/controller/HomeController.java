@@ -71,7 +71,7 @@ public class HomeController {
 			return "signup";
 		} catch (Exception e) {
 			model.addAttribute("user", user);
-			session.setAttribute("message", new Message("Something Went Wrong!" + e.getMessage(), "alert-danger"));
+			session.setAttribute("message", new Message("Something Went Wrong!!Email id already Exsiting" , "alert-danger"));
 			return "signup";
 
 		}

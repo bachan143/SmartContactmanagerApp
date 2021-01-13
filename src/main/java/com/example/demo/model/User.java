@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -20,8 +21,13 @@ import javax.validation.constraints.Size;
 @Table(name = "\"User\"")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@GeneratedValue(generator = "user_generator")
+	@SequenceGenerator(
+			name="user_generator",
+			sequenceName = "user_sequence",
+			initialValue =1000
+			)
+	private Long id;
 	@NotBlank(message = "Name Field is required...")
 	@Size(min = 2, max = 20, message = "min 2 and max 20 character are allowed..")
 	private String name;
@@ -45,12 +51,11 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {

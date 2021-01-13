@@ -104,7 +104,7 @@ public class UserController {
 	// per page-5[n[
 	// current page -0[page]
 	@RequestMapping("/show-contacts/{page}")
-	public String showContacts(@PathVariable("page") Integer page, Model model, Principal principal) {
+	public String showContacts(@PathVariable("page") int page, Model model, Principal principal) {
 		model.addAttribute("title", "Show Contacts");
 		String name = principal.getName();
 		User userByName = userRepository.getUserByName(name);
@@ -120,7 +120,7 @@ public class UserController {
 
 	// showing Particular Contact Detalis
 	@RequestMapping("/{cId}/contact")
-	public String showContactDetails(@PathVariable("cId") Integer cId, Model model, Principal principal) {
+	public String showContactDetails(@PathVariable("cId") Long cId, Model model, Principal principal) {
 		
 		Optional<Contact> findById = contactRepository.findById(cId);
 
@@ -136,7 +136,7 @@ public class UserController {
 
 	// delete Contact handler
 	@RequestMapping("/delete/{cId}")
-	public String deleteContact(@PathVariable("cId") Integer cId, Model model, HttpSession session,
+	public String deleteContact(@PathVariable("cId") Long cId, Model model, HttpSession session,
 			Principal principal) {
 		Optional<Contact> findById = contactRepository.findById(cId);
 		Contact contact = findById.get();
@@ -156,7 +156,7 @@ public class UserController {
 
 	// updating contact handller
 	@PostMapping("/update-contact/{cId}")
-	public String updateContact(@PathVariable("cId") Integer cId, Model model) {
+	public String updateContact(@PathVariable("cId") Long cId, Model model) {
 		model.addAttribute("title", "Update Contact");
 		Contact contact = contactRepository.findById(cId).get();
 		model.addAttribute("contact", contact);
