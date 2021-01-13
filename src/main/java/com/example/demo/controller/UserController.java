@@ -120,7 +120,7 @@ public class UserController {
 
 	// showing Particular Contact Detalis
 	@RequestMapping("/{cId}/contact")
-	public String showContactDetails(@PathVariable("cId") Long cId, Model model, Principal principal) {
+	public String showContactDetails(@PathVariable("cId") int cId, Model model, Principal principal) {
 		
 		Optional<Contact> findById = contactRepository.findById(cId);
 
@@ -136,7 +136,7 @@ public class UserController {
 
 	// delete Contact handler
 	@RequestMapping("/delete/{cId}")
-	public String deleteContact(@PathVariable("cId") Long cId, Model model, HttpSession session,
+	public String deleteContact(@PathVariable("cId") int cId, Model model, HttpSession session,
 			Principal principal) {
 		Optional<Contact> findById = contactRepository.findById(cId);
 		Contact contact = findById.get();
@@ -156,7 +156,7 @@ public class UserController {
 
 	// updating contact handller
 	@PostMapping("/update-contact/{cId}")
-	public String updateContact(@PathVariable("cId") Long cId, Model model) {
+	public String updateContact(@PathVariable("cId") int cId, Model model) {
 		model.addAttribute("title", "Update Contact");
 		Contact contact = contactRepository.findById(cId).get();
 		model.addAttribute("contact", contact);

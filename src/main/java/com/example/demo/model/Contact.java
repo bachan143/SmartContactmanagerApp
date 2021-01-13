@@ -23,7 +23,7 @@ public class Contact {
 			sequenceName = "contact_sequence",
 			initialValue =1000
 			)
-	private Long cId;
+	private int cId;
 	private String name;
 	private String secondName;
 	private String work;
@@ -37,10 +37,10 @@ public class Contact {
 	
 	private User user;
 
-	public void setcId(Long cId) {
+	public void setcId(int cId) {
 		this.cId = cId;
 	}
-	public Long getcId() {
+	public int getcId() {
 		return cId;
 	}
 

@@ -27,7 +27,7 @@ public class User {
 			sequenceName = "user_sequence",
 			initialValue =1000
 			)
-	private Long id;
+	private int id;
 	@NotBlank(message = "Name Field is required...")
 	@Size(min = 2, max = 20, message = "min 2 and max 20 character are allowed..")
 	private String name;
@@ -51,10 +51,10 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
